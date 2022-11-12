@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const {Router} = require('express');
-const {Dog,Temper}= require('../src/db')//falta traer el Op,si es q lo uso
+const {Dog,Temper,Op}= require('../src/db')//falta traer el Op,si es q lo uso
 async function  getDogs(race){
     //Falta que retorne raza encontrada parecida,o sin una palabra
     const dogsApi = await axios('https://api.thedogapi.com/v1/breeds')
@@ -77,13 +77,81 @@ async function  getDogs(race){
     }
    
 
-    async function createDog(id,name,height,weight,life_span){
+    async function createDog(id,name,height,weight,life_span,temperaments){
         //life span puede ser undefined ,nose si falta algo de eso
         let newDog = await Dog.create(
             {
             id,name,height,weight,life_span
         })
+        //buscar los tempers en la DB
+        //buscar los ids de los tempers que se van a agregar
+        let tempersInObj,tempersIDs;
+        if(temperaments){
+            tempersInObj=  temperaments.map(e=>{
+            return {
+                name : e.toLowerCase()
+            }
+        })
+        const tempers = await Temper.findAll({
+            where:{
+                [Op.or]:tempersInObj
+            }
+        })
+         
+        tempersIDs = tempers.map(e=> e.id)
+
+        await newDog.addTempers(tempersIDs)
+        }
         return newDog;
     }
     
-    module.exports = {getDogs,getDogById,createDog};
+    async function  getTemperaments(){
+        const dogsApi = await axios('https://api.thedogapi.com/v1/breeds')
+        .then(res => res.data)
+        const dogsDB = await Dog.findAll();//falta incluir temperamento
+        let allDogs =[];
+        if (!dogsApi && !dogsDB){
+            throw new Error('no api founded');
+       }else{
+         allDogs = [...dogsApi,...dogsDB];
+       }
+       
+       let arrTemps=[];
+      
+       allDogs.forEach(e=>
+        {
+            if(e.temperament){
+                let arr = e.temperament.split(',')
+                arrTemps = [...arrTemps,...arr]
+            }
+            
+       })
+      
+       let  fixed = arrTemps.map(e=>{
+        let string;
+        if(e[0] === ' ') { 
+            string= e.slice(1);
+            
+            return string.toLowerCase()
+        }
+        return e.toLowerCase()
+
+        })
+        
+        let filtered = fixed.filter((item,index)=>{
+            return fixed.indexOf(item) === index;
+          })
+
+        let arrObj = filtered.map(e=> {return{name:e}})
+
+       
+       
+       const tempersDB = await Temper.bulkCreate(arrObj)
+       return tempersDB;
+        }
+
+
+
+
+        
+    module.exports = {getDogs,getDogById,createDog,getTemperaments};
