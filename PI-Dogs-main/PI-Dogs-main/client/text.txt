@@ -1,0 +1,26 @@
+lading page : img de perros de fondo,boton para ingresar al home.
+
+
+ruta princpial:
+*input de busqueda para encontrar razas de perros por nombre
+*area donde se ve listado de razas de perro(supongo que todas)
+*botones para ordenar ascendente y descendente las razas por orden alfabetico y perros
+*Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
+
+
+ruta detalle de raza de perro debe contener:
+*Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
+[ ] Altura
+[ ] Peso
+[ ] Años de vida
+
+
+
+ruta creacion de raza de perro:
+[ ] Un formulario controlado con JavaScript con los siguientes campos:
+Nombre
+Altura (Diferenciar entre altura mínima y máxima)
+Peso (Diferenciar entre peso mínimo y máximo)
+Años de vida
+[ ] Posibilidad de seleccionar/agregar uno o más temperamentos
+[ ] Botón/Opción para crear una nueva raza de perro

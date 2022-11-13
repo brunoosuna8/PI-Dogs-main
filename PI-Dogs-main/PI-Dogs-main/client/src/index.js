@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+//3 rutas,home,creacion de raza,buscar por raza
 ReactDOM.render(
   <React.StrictMode>
     <App />
