@@ -24,3 +24,9 @@ Peso (Diferenciar entre peso mínimo y máximo)
 Años de vida
 [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
 [ ] Botón/Opción para crear una nueva raza de perro
+
+
+preguntas:
+como enviar la info del form por req.body al post y q se cree en la DB 
+como hacer lo de pasar varaibles de int a "10 - 12 years" donde hacer eso.
+no tendria q usar el estado global para el form no ?no sirve de nada
