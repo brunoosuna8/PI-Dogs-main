@@ -20,15 +20,10 @@ router.get('/',async (req,res)=>{
         return res.status(404).send(error.message)
     }
 })
-router.get('/:id',async (req,res)=>{
-    try {
-        const {id} = req.params
-        return res.status(200).json(await getDogById(id))
 
-    } catch (error) {
-        return res.status(404).send(error.message)
-    }
-})
+
+
+
 router.post('/',async (req,res)=>{
     const{id,name,height,weight,life_span,temperaments} = req.body;
    
@@ -44,7 +39,15 @@ router.post('/',async (req,res)=>{
 
 })
 
+router.get('/:id',async (req,res)=>{
+    try {
+        const {id} = req.params
+        return res.status(200).json(await getDogById(id))
 
+    } catch (error) {
+        return res.status(404).send(error.message)
+    }
+})
 
 
 

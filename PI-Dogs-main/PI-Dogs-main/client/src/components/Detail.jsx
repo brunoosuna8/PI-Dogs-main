@@ -9,19 +9,18 @@ export default function Detail(props){
     const dog = useSelector(state => state.dogDetail);
     const dogId = props.match.params.id;
     React.useEffect(()=>{
-        dispatch(actions.getDogById(dogId));
-    }
-    )
+         dispatch(actions.getDogById(dogId));
+         
+    },[])
+    console.log(dog)
     return(
         <div>
+            
             <h1>{dog.name}</h1>
-            <img src={dog.image.url} style="width: 50px;height: 50px"></img>
-            <h3>Temperaments : {dog.temeperament}</h3>
+            <img src={dog.image && dog.image} ></img>
+            <h3>Temperaments : {dog.temperament}</h3>
             <h3>Height : {dog.height}</h3>
-            <h3>Weight : {dog.weight}</h3>
             <h3>Life span : {dog.life_span}</h3>
-
-
         </div>
     )
 }

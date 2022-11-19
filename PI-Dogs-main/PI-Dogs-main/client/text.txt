@@ -30,3 +30,38 @@ preguntas:
 como enviar la info del form por req.body al post y q se cree en la DB 
 como hacer lo de pasar varaibles de int a "10 - 12 years" donde hacer eso.
 no tendria q usar el estado global para el form no ?no sirve de nada
+como poner estilos en los elementos html de forma rapida 
+porq en weight y height hay metric y imperial q hago con eso.
+status 304 en la consola de la api al pedir los dogs en la home
+le quiero poner un for en el renderizado de los componentes y no anda,pero si con un map ? porq
+
+
+
+falta temperamentos por todos lados ,fijarse en todo
+falta por hacer :
+imagen de fondo en landing page ,hacer q ande el boton de ingresar
+
+home:
+input de busqueda para encontrar razas de perro por nombre
+
+filtrar por temperamento,raza existente
+ordenar acendentemente como descentente por orden alfabetico y peso
+Paginado de 8 razas por Paginado
+
+detail:
+no muestra los temperamentos
+no para de hacer request del dog por id
+
+CreateBreed:
+falta agregar temperamentos,q solo se puedan agregar los temperamentos existentes 
+falta agregar validaciones por todos lados ,leer readme
+
+hacer los testings respectivos
+pasar todo a ingles
+
+
+hacer filtrado por nombre,temperamento raza
+pienso en ,didmount de getTemperaments,
+hacer select de options con 124 temps
+todos tienen q tener un on change para cuando se marge uno
+q entre a los seleccionados y vuelva a renderizar todo el componente home

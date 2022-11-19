@@ -6,8 +6,8 @@ export default function NavBar(){
         <React.Fragment>
         <nav>
             <ul>
-                <li><NavLink exact to={"/home"}>home</NavLink></li>
-                <li><NavLink exact to={"/create-breed"}>Create Breed</NavLink></li>
+                <li><NavLink exact to={"/dogs"}>home</NavLink></li>
+                <li><NavLink exact to={"/dogs/create-breed"}>Create Breed</NavLink></li>
                 <li>about</li>
             </ul>
         </nav>
