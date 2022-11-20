@@ -5,12 +5,21 @@ export const GET_DOG_BY_NAME = 'GET_DOG_BY_NAME';
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 
 
-export function getAllDogs(){
-    return  function (dispatch){
-        fetch('http://localhost:3001/dogs')
-        .then(response =>response.json())
-        .then(json => dispatch({type:GET_ALL_DOGS,payload:json}))
+export function getAllDogs(name){
+    if(name !== ""){
+        return  function (dispatch){
+            fetch(`http://localhost:3001/dogs?name=${name}`)
+            .then(response =>response.json())
+            .then(json => dispatch({type:GET_ALL_DOGS,payload:json}))
+        }
+    }else{
+        return  function (dispatch){
+            fetch('http://localhost:3001/dogs')
+            .then(response =>response.json())
+            .then(json => dispatch({type:GET_ALL_DOGS,payload:json}))
+        }
     }
+    
 }
 
 
@@ -39,11 +48,7 @@ export function createDog(data){
 }
 
 export function getDogByName(name){
-    return  function (dispatch){
-        fetch(`http://localhost:3001/dogs?name=${name}`)
-        .then(response =>response.json())
-        .then(json => dispatch({type:GET_DOG_BY_NAME,payload:json}))
-    }
+    
 }
 
 

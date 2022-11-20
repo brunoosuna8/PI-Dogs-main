@@ -4,30 +4,50 @@ import { getAllDogs,getDogByName } from "../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import DogCard from "./DogCard";
 import home from '../styles/Home.module.css'
+import Paginado from './pages'; 
 const Home = () =>{
+  let dogs = useSelector(state => state.dogs)
+  console.log(dogs)
   let [input,setInput] = React.useState({
     name:""
   })
-
+  console.log(typeof input.name)
   const dispatch= useDispatch();
+  let [currentPage,setCurrentPage] = React.useState(1)
+  let [dogsPerPage,setDogsPerPage] = React.useState(8)
+  const indexOfLastDog = currentPage * dogsPerPage; 
+  const indexOfFirstDog = indexOfLastDog - dogsPerPage; //
+  const currentDogs = dogs.slice(indexOfFirstDog,indexOfLastDog)
+  
+
+  const paginado = (pageNumber) =>{
+    setCurrentPage(pageNumber)
+  }
+
+
 
 
   let handleChange= (e) =>{
     e.preventDefault();
     setInput((prev) => ({...prev,[e.target.name]:e.target.value}))
+
     
     dispatch(getAllDogs(e.target.value))
-    
-}
-let handleSubmit= (e) =>{
-  e.preventDefault();
-  console.log(input.value)
-}
-  React.useEffect(()=>{
-    dispatch(getAllDogs());
-  },[])
+    console.log(e.target.value)
+  }
 
-  let dogs = useSelector(state => state.dogs)
+  let handleSubmit= (e) =>{
+  e.preventDefault();
+}
+
+  React.useEffect(()=>{
+    
+    dispatch(getAllDogs(input.name));
+    
+  },[dispatch,input])
+  
+
+  
   
     return (
       <React.Fragment>
@@ -46,12 +66,14 @@ let handleSubmit= (e) =>{
           <option value="descentent">descendent</option>
         </select>
         </form>
+
+       
         <div className={home.dogs}>
           
-          {dogs &&
-            dogs.map((dog) => {
-              //console me dice que cada child teiene q tener una key para ya la tiene nose q onda
-
+          {currentDogs &&
+            currentDogs.map((dog) => {
+              
+              
               return (
                 <DogCard
                   key={dog.id}
@@ -66,6 +88,11 @@ let handleSubmit= (e) =>{
               );
             })}
         </div>
+        <Paginado 
+        dogsPerPage={dogsPerPage}
+        dogs={dogs.length}
+        paginado={paginado}
+        ></Paginado>
       </React.Fragment>
     );
   

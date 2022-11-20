@@ -44,7 +44,8 @@ async function  getDogs(race){
                 temperament:temperaments,
                 weight: weightMetric,
                 height: weightMetric,
-                life_span : e.life_span
+                life_span : e.life_span,
+                id: e.id
             });
 
         });//capas le falta algo
@@ -72,7 +73,7 @@ async function  getDogs(race){
                 image = e.image;
                 temperaments = temperArr.join();
             }
-            return{name: e.name,image: e.image,temperament:temperaments,weight: weightMetric}
+            return{name: e.name,image: e.image,temperament:temperaments,weight: weightMetric,id: e.id}
         })
         return filterDogs;
     }

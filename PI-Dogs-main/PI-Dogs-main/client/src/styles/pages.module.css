@@ -1,0 +1,14 @@
+.paginado{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.paginado li{
+    background-color: yellow;
+    margin: 0 2px;
+    border: 1px solid black;
+
+}
