@@ -56,12 +56,9 @@ CreateBreed:
 falta agregar temperamentos,q solo se puedan agregar los temperamentos existentes 
 falta agregar validaciones por todos lados ,leer readme
 
-hacer los testings respectivos
+
+terminar boton delete temperament de home
 pasar todo a ingles
 
 
-hacer filtrado por nombre,temperamento raza
-pienso en ,didmount de getTemperaments,
-hacer select de options con 124 temps
-todos tienen q tener un on change para cuando se marge uno
-q entre a los seleccionados y vuelva a renderizar todo el componente home
+
