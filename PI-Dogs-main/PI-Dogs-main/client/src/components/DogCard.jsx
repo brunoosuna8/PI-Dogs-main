@@ -5,7 +5,7 @@ import card from '../styles/DogCard.module.css'
 
 const DogCard =  (props) =>{
     
-    console.log(props.id)
+   
     return(
         
     <div  className={card.card}><NavLink exact to={"/dogs/"+props.id}>

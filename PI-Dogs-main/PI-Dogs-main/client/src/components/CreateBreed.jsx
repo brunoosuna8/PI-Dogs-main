@@ -1,7 +1,36 @@
 import React from 'react';
 import * as actions from '../actions/actions.js';
 import { useDispatch, useSelector } from "react-redux";
+export function validate(input){
+    let errors = {};
+    
+    console.log(input)
 
+    // if(input.max_height < input.min_height) errors.maxMin = `Max height can't be lower than min height`;
+    // if(input.max_weight < input.min_weight) errors.maxMin = `Max weight can't be lower than min weight`;
+    // if(input.max_life < input.min_life) errors.maxMin = `Max life span can't be lower than min life span`;
+    if((input.max_height < input.min_height) || 
+    (input.max_weight < input.min_weight) ||
+    (input.max_life < input.min_life)
+    ){
+        errors.maxMin = 'Some value of max-min is incongruent'
+        console.log(errors.maxMin)
+    }
+    if (!input.name) {
+        
+      errors.name = 'Name of breed is required';
+      console.log(errors.name)
+    } else if (!/\S+@\S+\.\S+/.test(input.name)) {
+      errors.name = 'Username is invalid';
+      console.log(errors.name)
+    
+    }
+
+
+    
+  
+    return errors;
+  }
 export default function CreateBreed(){
     
 
@@ -15,6 +44,13 @@ export default function CreateBreed(){
         min_life:0,
         temperaments: [],
     })
+    const [errors, setErrors] = React.useState({});
+
+
+
+
+
+
 
     const dispatch = useDispatch();
     
@@ -28,7 +64,15 @@ export default function CreateBreed(){
 
     let handleChange= (e) =>{
         e.preventDefault();
-        setInput((prev) => ({...prev,[e.target.name]:e.target.value}))
+        setInput((prev) => (
+            {...prev,[e.target.name]:e.target.value}
+            ))
+
+            setErrors(validate({
+                ...input,
+                [e.target.name]: e.target.value
+              }));
+        
         
     }
     let handleSubmit= (e) =>{
@@ -48,6 +92,11 @@ export default function CreateBreed(){
             temperaments: input.temperaments
         }
         console.log(obj);
+        console.log(errors);
+        console.log(Object.keys(errors).length);
+
+        if(Object.keys(errors).length  > 0) {console.log('there is some empty value');return}
+
         dispatch(actions.createDog(obj))
         
 
@@ -55,7 +104,7 @@ export default function CreateBreed(){
 
     let handleChangeSelect =(e)=>{
         
-        console.log(input.temperaments)
+        
 
         if(!input.temperaments.includes(e.target.value)){
             
