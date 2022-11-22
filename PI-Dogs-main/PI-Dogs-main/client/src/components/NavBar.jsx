@@ -1,16 +1,18 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
+import styles from '../styles/NavBar.module.css'
 export default function NavBar(){
     return(
         <React.Fragment>
-        <nav>
-            <ul>
-                <li><NavLink exact to={"/dogs"}>home</NavLink></li>
+            <nav>
+            <ul className={styles.navbar}>
+                <li><NavLink exact to={"/dogs"}>Home</NavLink></li>
                 <li><NavLink exact to={"/dogs/create-breed"}>Create Breed</NavLink></li>
-                <li>about</li>
+                <li>About</li>
             </ul>
-        </nav>
+            </nav>
+            
+        
         </React.Fragment>
     )
 }

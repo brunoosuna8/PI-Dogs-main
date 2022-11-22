@@ -34,7 +34,7 @@ export default function rootReducer(state = initialState, action) {
           e.temperament?.includes(action.payload[i])
         );
       }
-      console.log(filteredDogs)
+      console.log(filteredDogs);
       return { ...state, dogs: filteredDogs };
 
     case GET_ORDERED:
@@ -45,17 +45,14 @@ export default function rootReducer(state = initialState, action) {
         if (a.name < b.name) {
           return -1;
         }
-        // a must be equal to b
         return 0;
       });
       if (action.payload.state === "ascendente") {
         return { ...state, dogs: ordered };
       } else if (action.payload.state === "descendente") {
         let reversed = ordered.reverse();
-
         return { ...state, dogs: reversed };
-      }
-
+      }else{break;}
     default:
       return state;
   }

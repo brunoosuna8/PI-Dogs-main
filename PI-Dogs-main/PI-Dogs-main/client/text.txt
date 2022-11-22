@@ -59,6 +59,7 @@ falta agregar validaciones por todos lados ,leer readme
 
 terminar boton delete temperament de home
 pasar todo a ingles
+porque era lo del css.module ?
 
 
 
