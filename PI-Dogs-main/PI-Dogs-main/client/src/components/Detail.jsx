@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import * as actions from "../actions/actions";
 import {useDispatch,useSelector} from 'react-redux';
+import detail from '../styles/Detail.module.css'
 //componente cuando se hace click en un perro o se busca por id
 export default function Detail(props){
     
@@ -12,9 +13,9 @@ export default function Detail(props){
          dispatch(actions.getDogById(dogId));
          
     },[])
-    console.log(dog)
+    
     return(
-        <div>
+        <div className={detail.mainContainerDetail}>
             
             <h1>{dog.name}</h1>
             <img src={dog.image && dog.image} ></img>

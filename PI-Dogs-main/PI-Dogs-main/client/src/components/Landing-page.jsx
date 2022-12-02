@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
+import style from '../styles/Landing-Page.module.css'
 export default class LandingPage extends React.Component{
     
 
@@ -8,10 +8,10 @@ export default class LandingPage extends React.Component{
     return(
         <React.Fragment>
         
-
-        <div className="App">
+      
+        <div className={style.App}>
       <h1>Henry Dogs</h1>
-      <button><NavLink to={"/dogs"}>ingresar</NavLink></button>
+      <button className={style.entryButton}><NavLink to={"/dogs"}>ingresar</NavLink></button>
         </div>
     </React.Fragment>
     )

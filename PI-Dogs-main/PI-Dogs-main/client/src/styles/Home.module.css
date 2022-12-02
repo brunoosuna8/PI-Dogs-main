@@ -1,8 +1,77 @@
 .dogs{
-    background-color: red;
+    
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.filter_container{
+    margin: 0 auto;
+    justify-content: center;
+    width: 800px;
+    height: 500px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 4px solid pink;
+    background-image: url('./side-dog-img.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+}
+.nameFilter{
+    width: 200px;
+    height: 200px;
+    
+    
+}
+.temperamentsFilter{
+    
+    text-align: right;
+    width: 500px;
+    height: 500px;
+    /* background-color: greenyellow; */
+}
+.selectedTemperaments{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:fit-content;
+    
+}
+.selectedTemperaments h3{
+    border: 3px solid pink;
+    
+    border-radius: 10px;
+}
+.temperament{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 160px;
+    height: 60px;
+    background-color: pink;
+    color: white;
+    margin: 20px;
+    border-radius: 15px;
+}
+.temperament button{
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    background-color: transparent;
+}
+.temperament button:hover{
+    background-color: white;
+    border-color: pink;
+    color: black;
+    cursor: pointer;
 }

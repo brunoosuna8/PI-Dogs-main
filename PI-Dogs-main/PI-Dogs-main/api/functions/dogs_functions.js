@@ -1,9 +1,8 @@
 const axios = require("axios");
 
 const { Router } = require("express");
-const { Dog, Temper, Op } = require("../src/db"); //falta traer el Op,si es q lo uso
+const { Dog, Temper, Op } = require("../src/db");
 async function getDogs(race) {
-  //Falta que retorne raza encontrada parecida,o sin una palabra
   const dogsApi = await axios("https://api.thedogapi.com/v1/breeds").then(
     (res) => res.data
   );
@@ -65,18 +64,21 @@ async function getDogs(race) {
     });
 
     if (filterDogs.length < 1) {
-      throw new Error("no dogs founded"); //si no se encuentra devuelve array
+      throw new Error("no dogs founded");
     } else {
       return filterDogs;
     }
-
-    
   } else {
     filterDogs = allDogs.map((e) => {
       let weightMetric, temperaments, image;
 
       if (e.weight.metric) {
-        weightMetric = e.weight.metric;
+        if (e.weight.metric.includes("NaN")) {
+          weightMetric = "0";
+        } else {
+          weightMetric = e.weight.metric;
+        }
+
         temperaments = e.temperament;
         image = e.image.url;
       } else {
@@ -175,8 +177,7 @@ async function createDog(id, name, height, weight, life_span, temperaments) {
         [Op.or]: tempersInObj,
       },
     });
-    const count = await Temper.count();
-    console.log(count)
+
     tempersIDs = tempers.map((e) => e.id);
 
     await newDog.addTempers(tempersIDs);
@@ -185,12 +186,12 @@ async function createDog(id, name, height, weight, life_span, temperaments) {
 }
 
 async function getTemperaments() {
-    const count = await Temper.count();
-    console.log(count)
-    if(count == 124){
-        let tempers = Temper.findAll();
-        return tempers
-    }
+  const count = await Temper.count();
+
+  if (count == 124) {
+    let tempers = Temper.findAll();
+    return tempers;
+  }
   const dogsApi = await axios("https://api.thedogapi.com/v1/breeds").then(
     (res) => res.data
   );
@@ -228,7 +229,7 @@ async function getTemperaments() {
   let arrObj = filtered.map((e) => {
     return { name: e };
   });
-  
+
   const tempersDB = await Temper.bulkCreate(arrObj);
   return tempersDB;
 }

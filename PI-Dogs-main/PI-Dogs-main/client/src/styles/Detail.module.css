@@ -1,0 +1,10 @@
+.mainContainerDetail{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    border: 4px solid pink;
+    border-radius: 50px;
+}

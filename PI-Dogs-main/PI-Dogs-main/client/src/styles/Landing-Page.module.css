@@ -1,0 +1,35 @@
+.App{
+   width: 100%;
+   height: 100vh;
+   /* background-color: red; */
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   background-image: url('./landing-page-img.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+
+.entryButton{
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid pink;
+    background-color: white;
+    text-decoration: none;
+    
+    
+}
+.entryButton:hover{
+    background-color: pink;
+    text-decoration: none;
+    
+
+
+}
+
+.entryButton:link { text-decoration: none; }
+.entryButton:visited { text-decoration: none; }
+.entryButton:active { text-decoration: none; }

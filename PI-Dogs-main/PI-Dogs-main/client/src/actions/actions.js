@@ -5,6 +5,8 @@ export const GET_DOG_BY_NAME = "GET_DOG_BY_NAME";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const FILTER_BY_TEMPERS = "FILTER_BY_TEMPERS";
 export const GET_ORDERED = "GET_ORDERED";
+export const GET_ORDERED_BY_WEIGHT = "GET_ORDERED_BY_WEIGHT";
+
 
 export function getAllDogs(name) {
   if (name !== "") {
@@ -61,7 +63,12 @@ export function filterByTempers(tempers) {
 }
 
 export function getOrdered(state) {
-    return function (dispatch) {
-      dispatch({ type: GET_ORDERED, payload: state });
-    };
-  }
+  return function (dispatch) {
+    dispatch({ type: GET_ORDERED, payload: state });
+  };
+}
+export function getOrderedByWeight(state) {
+  return function (dispatch) {
+    dispatch({ type: GET_ORDERED_BY_WEIGHT, payload: state });
+  };
+}

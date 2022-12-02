@@ -37,29 +37,30 @@ le quiero poner un for en el renderizado de los componentes y no anda,pero si co
 
 
 
-falta temperamentos por todos lados ,fijarse en todo
+
 falta por hacer :
-imagen de fondo en landing page ,hacer q ande el boton de ingresar
+imagen de fondo en landing page 
 
 home:
-input de busqueda para encontrar razas de perro por nombre
 
-filtrar por temperamento,raza existente
-ordenar acendentemente como descentente por orden alfabetico y peso
-Paginado de 8 razas por Paginado
+cuando se seleccionen varios temperamentos y no haya perro con esos tempers mostrar un msj
+agregar algun div para mostrar mensajes de errores,de q no hay perros con esos tempers
+ordenar acendentemente como descentente por peso
+
 
 detail:
-no muestra los temperamentos
-no para de hacer request del dog por id
+
+
 
 CreateBreed:
-falta agregar temperamentos,q solo se puedan agregar los temperamentos existentes 
-falta agregar validaciones por todos lados ,leer readme
+
+falta agregar validaciones : mostrar errores ,q no permite submitear si falta info importante,
 
 
-terminar boton delete temperament de home
+
 pasar todo a ingles
 porque era lo del css.module ?
+temper filter se rompe cuando agregas temperamentos que ningun perro tiene esos en particular
 
-
+soft skills: mirar a camara al hablar,hablar tranquilo,contento,no frustrarse con el live coding,
 
